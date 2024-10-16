@@ -1,0 +1,12 @@
+x-trestle-component-info:
+  description: Testing trestlebot init
+  name: test-component
+  type: service
+x-trestle-rule-info:
+  description: Rule for cp-7
+  name: rule-cp-7
+  profile:
+    description: NIST Special Publication 800-53 Revision 5 HIGH IMPACT BASELINE
+    href: trestle://profiles/nist_rev5_800_53/profile.json
+    include-controls:
+    - id: cp-7
