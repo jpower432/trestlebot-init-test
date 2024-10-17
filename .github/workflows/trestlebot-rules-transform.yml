@@ -7,7 +7,7 @@ on:
       - 'profiles/**'
       - 'catalogs/**'
       - 'component-definitions/**'
-      - 'md_comp/**'
+      - 'markdown/**'
       - 'rules/**'
 
 concurrency:
@@ -35,7 +35,7 @@ jobs:
         id: autosync
         uses: RedHatProductSecurity/trestle-bot/actions/autosync@main
         with:
-          markdown_path: "md_comp"
+          markdown_path: "markdown/components"
           oscal_model: "compdef"
           commit_message: "Autosync component definition content [skip ci]"
       - uses: dorny/paths-filter@v3
@@ -49,5 +49,5 @@ jobs:
         id: transform
         uses: RedHatProductSecurity/trestle-bot/actions/rules-transform@feat/markdown-generation-transform
         with:
-          markdown_path: "md_comp"
+          markdown_path: "markdown/components"
           commit_message: "Auto-transform rules [skip ci]" 
