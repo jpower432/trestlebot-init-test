@@ -88,7 +88,7 @@ ______________________________________________________________________
 
 <!-- Note that the list of rules under ### Rules: is read-only and changes will not be captured after assembly to JSON -->
 
-My ac-1 implemtnation
+My ac-1 implementation
 
 ### Rules:
 
