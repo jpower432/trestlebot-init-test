@@ -33,6 +33,7 @@ jobs:
           markdown_path: "markdown/component-definitions"
           oscal_model: "compdef"
           file_pattern: "*.json,markdown/*"
+          dry_run: true
       - name: Check if rules changed
         id: changes
         uses: dorny/paths-filter@v2
