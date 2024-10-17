@@ -1,6 +1,4 @@
----
-name: Trestle-bot rules-transform and autosync
-
+name: Push to main
 on:
   push:
     branches:
@@ -9,7 +7,7 @@ on:
       - 'profiles/**'
       - 'catalogs/**'
       - 'component-definitions/**'
-      - 'markdown/**'
+      - 'md_comp/**'
       - 'rules/**'
 
 concurrency:
@@ -17,31 +15,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  rules-transform-and-autosync:
-    name: Rules Transform and AutoSync
+  transform-and-sync:
+    name: Automatically Sync Content
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout repository
+      - name: Generate app token
+        uses: tibdex/github-app-token@v2.1.0
+        id: get_installation_token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+          permissions: >-
+            {"contents": "write"}
+      - name: Clone
         uses: actions/checkout@v4
+        with:
+          token: ${{ steps.get_installation_token.outputs.token }}
       - name: AutoSync
         id: autosync
         uses: RedHatProductSecurity/trestle-bot/actions/autosync@main
         with:
-          markdown_path: "markdown/component-definitions"
+          markdown_path: "md_comp"
           oscal_model: "compdef"
           commit_message: "Autosync component definition content [skip ci]"
-      - name: Check if rules changed
+      - uses: dorny/paths-filter@v3
         id: changes
-        uses: dorny/paths-filter@v3
         with:
           filters: |
             rules:
               - 'rules/**'
-      - name: Rules Transform
+      - name: Transform
         if: steps.changes.outputs.rules == 'true'
-        uses: RedHatProductSecurity/trestle-bot/actions/rules-transform@main
+        id: transform
+        uses: RedHatProductSecurity/trestle-bot/actions/rules-transform@feat/markdown-generation-transform
         with:
-          markdown_path: "markdown/component-definitions"
-          commit_message: "Auto-transform rules [skip ci]"
+          markdown_path: "md_comp"
+          commit_message: "Auto-transform rules [skip ci]" 
