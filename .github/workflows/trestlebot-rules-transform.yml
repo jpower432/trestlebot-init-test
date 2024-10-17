@@ -30,7 +30,6 @@ jobs:
           markdown_path: "markdown/component-definitions"
           oscal_model: "compdef"
           file_pattern: "*.json,markdown/*"
-          branch: ${{ github.ref }}
       - name: Check if rules changed
         id: changes
         uses: dorny/paths-filter@v2
