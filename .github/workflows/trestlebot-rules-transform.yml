@@ -2,7 +2,7 @@
 name: Trestle-bot rules-transform and autosync
 
 on:
-  push:
+  pull_request:
     branches:
       - main
     paths:
@@ -30,7 +30,7 @@ jobs:
           markdown_path: "markdown/component-definitions"
           oscal_model: "compdef"
           file_pattern: "*.json,markdown/*"
-          # branch: ${{ github.head_ref }}
+          branch: ${{ github.head_ref }}
       - name: Check if rules changed
         id: changes
         uses: dorny/paths-filter@v2
