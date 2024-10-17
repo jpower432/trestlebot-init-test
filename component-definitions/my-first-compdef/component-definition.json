@@ -3,7 +3,7 @@
     "uuid": "e3b63147-9eb9-457a-9939-ad1e20cf102f",
     "metadata": {
       "title": "Component definition for my-first-compdef",
-      "last-modified": "2024-10-17T18:20:54.781117+00:00",
+      "last-modified": "2024-10-17T19:18:32.042347+00:00",
       "version": "1.0",
       "oscal-version": "1.1.2"
     },
@@ -5728,7 +5728,7 @@
               {
                 "uuid": "d86999bd-aad3-4279-a4ba-44f638184b1c",
                 "control-id": "ac-1",
-                "description": "",
+                "description": "My ac-1 implemtnation",
                 "props": [
                   {
                     "name": "Rule_Id",
