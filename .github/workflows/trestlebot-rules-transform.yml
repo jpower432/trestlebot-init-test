@@ -2,7 +2,7 @@
 name: Trestle-bot rules-transform and autosync
 
 on:
-  pull_request:
+  push:
     branches:
       - main
     paths:
@@ -20,6 +20,8 @@ jobs:
   rules-transform-and-autosync:
     name: Rules Transform and AutoSync
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,7 +34,7 @@ jobs:
           file_pattern: "*.json,markdown/*"
       - name: Check if rules changed
         id: changes
-        uses: dorny/paths-filter@v2
+        uses: dorny/paths-filter@v3
         with:
           filters: |
             rules:
