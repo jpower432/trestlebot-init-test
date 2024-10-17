@@ -31,7 +31,7 @@ jobs:
         with:
           markdown_path: "markdown/component-definitions"
           oscal_model: "compdef"
-          file_pattern: "*.json,markdown/*"
+          commit_message: "Autosync component definition content [skip ci]"
       - name: Check if rules changed
         id: changes
         uses: dorny/paths-filter@v3
