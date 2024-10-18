@@ -3,7 +3,7 @@ x-trestle-component-info:
   name: test-component
   type: service
 x-trestle-rule-info:
-  description: Rule for ac-1
+  description: Rule for ac-1 again
   name: rule-ac-1
   profile:
     description: NIST Special Publication 800-53 Revision 5 HIGH IMPACT BASELINE
